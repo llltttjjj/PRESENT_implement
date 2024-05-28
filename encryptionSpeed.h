@@ -22,17 +22,17 @@ void performanceTest() {
 	uint64_t clkstart, clkend;
 	clock_t start;
 
-	//// Testing the original implement
-	//cout << "Testing the original implement " << dec << runTimes << " times.\n";
-	//start = clock();
-	//clkstart = __rdtsc();
-	//originCTX.encrypt_block_MultipleTimes(state, state, runTimes);
-	//clkend = __rdtsc();
-	//cout << "Performance: " << (double)(clkend - clkstart) / (8 * runTimes) << " CPB\n";
-	//cout << "The output is: ";
-	//for (int i = 0; i < 8; i++)
-	//	printf("%02X", (unsigned char)state[i]);
-	//cout << "\nCosts " << clock() - start << " ms.\n\n";
+	// Testing the original implement
+	cout << "Testing the original implement " << dec << runTimes << " times.\n";
+	start = clock();
+	clkstart = __rdtsc();
+	originCTX.encrypt_block_MultipleTimes(state, state, runTimes);
+	clkend = __rdtsc();
+	cout << "Performance: " << (double)(clkend - clkstart) / (8 * runTimes) << " CPB\n";
+	cout << "The output is: ";
+	for (int i = 0; i < 8; i++)
+		printf("%02X", (unsigned char)state[i]);
+	cout << "\nCosts " << clock() - start << " ms.\n\n";
 
 	// Reset state
 	for (int i = 0; i < 8; i++) state[i] = 0;
